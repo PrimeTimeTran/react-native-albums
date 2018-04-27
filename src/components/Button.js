@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, Linking } from 'react-native';
 
-const Button = ({ onPress, children }) => {
+const Button = ({ url, children }) => {
   const { buttonStyle, textStyle } = styles;
+
   return (
-    <TouchableOpacity onPress={onPress} style={buttonStyle}>
+    <TouchableOpacity onPress={() => Linking.openURL(url)} style={buttonStyle}>
       <Text style={textStyle}>
         {children}
       </Text>

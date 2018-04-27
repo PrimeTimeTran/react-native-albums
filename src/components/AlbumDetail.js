@@ -1,20 +1,17 @@
 import React from 'react';
-import { Text, View, Image, Linking } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button';
 
-const AlbumDetail = ({ album }) => { // album was originally 'props'
-  // Refactor of the reference 'props.album.title//artist//thumbnail_image' on line 23, 27, 28
+const AlbumDetail = ({ album }) => {
   const { title, artist, thumbnail_image, image, url } = album;
-
-  // Refactor of styles
   const {
     thumbnailStyle,
-    headerContentStyle,
+    headerContainerStyle,
     thumbnailContainerStyle,
     headerTextStyle,
-    imageStyle
+    heroImageStyle
    } = styles;
 
   return (
@@ -27,7 +24,7 @@ const AlbumDetail = ({ album }) => { // album was originally 'props'
           />
         </View>
 
-        <View style={headerContentStyle}>
+        <View style={headerContainerStyle}>
           <Text style={headerTextStyle}>{title}</Text>
           <Text>{artist}</Text>
         </View>
@@ -35,13 +32,13 @@ const AlbumDetail = ({ album }) => { // album was originally 'props'
 
       <CardSection>
         <Image
-          style={imageStyle}
+          style={heroImageStyle}
           source={{ uri: image }}
         />
       </CardSection>
 
       <CardSection>
-        <Button onPress={() => Linking.openURL(url)}>
+        <Button url={url}>
           Buy Now
         </Button>
       </CardSection>
@@ -50,16 +47,13 @@ const AlbumDetail = ({ album }) => { // album was originally 'props'
 };
 
 const styles = {
-  headerContentStyle: {
+  headerContainerStyle: {
     flexDirection: 'column',
     justifyContent: 'space-around'
   },
   headerTextStyle: {
-    fontSize: 20
-  },
-  thumbnailStyle: {
-    height: 50,
-    width: 50
+    fontSize: 25,
+    fontWeight: '600'
   },
   thumbnailContainerStyle: {
     justifyContent: 'center',
@@ -67,7 +61,11 @@ const styles = {
     marginLeft: 10,
     marginRight: 10
   },
-  imageStyle: {
+  thumbnailStyle: {
+    height: 50,
+    width: 50
+  },
+  heroImageStyle: {
     height: 300,
     flex: 1,
     width: null
