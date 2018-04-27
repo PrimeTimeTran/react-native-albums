@@ -1,8 +1,6 @@
-// Import a library to help create a Component
 import React from 'react';
 import { Text, View } from 'react-native';
 
-// Create a Component
 const Header = (props) => {
   const { textStyle, viewStyle } = styles;
 
@@ -12,6 +10,7 @@ const Header = (props) => {
     </View>
   );
 };
+
 const styles = {
   viewStyle: {
     backgroundColor: '#f8f8f8',
@@ -28,6 +27,4 @@ const styles = {
   }
 };
 
-// Make the component available to other parts of the App
-// Must export statements to make it available
 export default Header;
